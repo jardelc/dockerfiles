@@ -6,7 +6,7 @@ RUN apk add --no-cache openssh-client git
 
 USER node-red
 
-COPY settings.js /data/settings.js
+COPY settings.js /usr/src/node-red/node_modules/node-red/settings.js
 
 EXPOSE 1880
 
