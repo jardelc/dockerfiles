@@ -26,6 +26,13 @@ log "Git configuration set."
 # Clone the repository into /data/projects/<PROJECT_NAME>
 if [ -n "$GIT_REPO" ]; then
   log "Cloning repository from $GIT_REPO into /data/projects/$PROJECT_NAME"
+  
+  # Check if the directory exists and is not empty
+  if [ -d "/data/projects/$PROJECT_NAME" ] && [ "$(ls -A /data/projects/$PROJECT_NAME)" ]; then
+    log "Directory /data/projects/$PROJECT_NAME already exists and is not empty. Removing it."
+    rm -rf "/data/projects/$PROJECT_NAME"
+  fi
+  
   git clone https://$GIT_TOKEN@${GIT_REPO#https://} "/data/projects/$PROJECT_NAME"
   if [ $? -eq 0 ]; then
     log "Repository cloned successfully."
