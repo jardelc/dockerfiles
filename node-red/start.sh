@@ -41,7 +41,7 @@ if [ -n "$GIT_REPO" ]; then
     rm -rf "/data/projects/$PROJECT_NAME"
   fi
   
-  git clone https://$GIT_TOKEN@${GIT_REPO#https://} "/data/projects/$PROJECT_NAME"
+  git clone https://oauth2:$GIT_TOKEN@${GIT_REPO#https://} "/data/projects/$PROJECT_NAME"
   if [ $? -eq 0 ]; then
     log "Repository cloned successfully."
   else
