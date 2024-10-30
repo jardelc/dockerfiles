@@ -21,7 +21,7 @@ git config --global user.name "$GIT_USERNAME"
 git config --global user.email "$GIT_EMAIL"
 
 # Check if SSL verification should be disabled
-if [ "$GIT_SSL_VERIFY" != "true" ]; then
+if [ "$GIT_SSL_VERIFY" == "false" ]; then
   log "Disabling SSL verification for Git."
   git config --global http.sslVerify false
 else
